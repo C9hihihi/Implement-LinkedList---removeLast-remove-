@@ -205,6 +205,7 @@ public class SinglyLinkedList {
             temp = temp.next;
             i++;
         }
+        System.out.println();
     }
     
     public static void main(String[] args) {
