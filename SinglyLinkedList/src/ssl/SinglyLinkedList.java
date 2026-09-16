@@ -26,6 +26,11 @@ public class SinglyLinkedList {
         return head == null;
     }
     
+    //Hàm lấy size của SLL
+    public int size() {
+        return size;
+    }
+    
     //Hàm thêm node mới vào đầu SLL
     public void addFirst(int data) {
         //Khởi tạo node mới
@@ -70,6 +75,11 @@ public class SinglyLinkedList {
     
     //Hàm thêm node mới vào vị trí bất kỳ trong SLL
     public void addAt(int index, int data) {
+        if (index < 0 || index >= size) {
+            System.out.println("Index out of bounds!");
+            return;
+        }
+        
         //TH1: index = 0
         if (index == 0) {
             addFirst(data);
@@ -131,8 +141,11 @@ public class SinglyLinkedList {
             return;
         
         //TH2: SLL có 1 node
-        if (head == tail)
+        if (head == tail) {
             head = tail = null;
+            size = 0;
+            return;
+        }
         
         //TH3: SLL có nhiều hơn 1 node
         //B1: Lấy node trước tail
@@ -152,6 +165,11 @@ public class SinglyLinkedList {
     
     //Hàm xóa node ở vị trí bất kỳ trong SLL
     public void removeAt(int index) {
+        if (index < 0 || index >= size) {
+            System.out.println("Index out of bounds!");
+            return;
+        }
+        
         //TH1: index = 0
         if (index == 0) {
             removeFirst();
@@ -168,7 +186,7 @@ public class SinglyLinkedList {
         //B1: Truy tới vị trí node trước node tại cần xóa (node tại index)
         Node temp = head;
         int i = 0;
-        while (i < index) {
+        while (i < index - 1) {
             temp = temp.next;
             i++;
         }
