@@ -75,7 +75,7 @@ public class SinglyLinkedList {
     
     //Hàm thêm node mới vào vị trí bất kỳ trong SLL
     public void addAt(int index, int data) {
-        if (index < 0 || index >= size) {
+        if (index < 0 || index > size) {
             System.out.println("Index out of bounds!");
             return;
         }
@@ -86,8 +86,8 @@ public class SinglyLinkedList {
             return;
         }
         
-        //TH2: index = size - 1
-        if (index == size - 1) {
+        //TH2: index = size
+        if (index == size) {
             addLast(data);
             return;
         }
@@ -148,7 +148,7 @@ public class SinglyLinkedList {
         }
         
         //TH3: SLL có nhiều hơn 1 node
-        //B1: Lấy node trước tail
+        //B1: Lấy node trước tail (sau này sẽ update để tối ưu hiệu năng)
         Node temp = head;
         while (temp.next != tail) {
             temp = temp.next;
@@ -196,6 +196,17 @@ public class SinglyLinkedList {
         size--;
     }
     
+    //Hàm in ra tất cả data trong SLL 
+    public void printList() {
+        Node temp = head;
+        int i = 0;
+        while (i < size) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+            i++;
+        }
+    }
+    
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.addLast(3);
@@ -207,10 +218,13 @@ public class SinglyLinkedList {
         sll.addLast(9);
         sll.addLast(10);
         
-        sll.removeLast();
+        System.out.println("Before removals:");
+        sll.printList();
         
+        sll.removeLast();
         sll.remove(3);
         
-        
+        System.out.println("After removals:");
+        sll.printList();
     }
 }
