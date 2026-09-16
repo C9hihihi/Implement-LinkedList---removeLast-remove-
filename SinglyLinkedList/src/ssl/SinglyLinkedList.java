@@ -38,7 +38,7 @@ public class SinglyLinkedList {
         
         //TH1: SLL chưa có node nào
         if (head == null) {
-            newNode = head = tail;
+            head = tail = newNode;
             size++;
             return;
         }
@@ -59,7 +59,7 @@ public class SinglyLinkedList {
         
         //TH1: SLL chưa có node nào
         if (head == null) {
-            newNode = head = tail;
+            head = tail = newNode;
             size++;
             return;
         }
@@ -164,7 +164,7 @@ public class SinglyLinkedList {
     }
     
     //Hàm xóa node ở vị trí bất kỳ trong SLL
-    public void removeAt(int index) {
+    public void remove(int index) {
         if (index < 0 || index >= size) {
             System.out.println("Index out of bounds!");
             return;
@@ -194,5 +194,23 @@ public class SinglyLinkedList {
         temp.next = temp.next.next;
         //B3: Giảm size
         size--;
+    }
+    
+    public static void main(String[] args) {
+        SinglyLinkedList sll = new SinglyLinkedList();
+        sll.addLast(3);
+        sll.addLast(4);
+        sll.addLast(5);
+        sll.addLast(6);
+        sll.addLast(7);
+        sll.addLast(8);
+        sll.addLast(9);
+        sll.addLast(10);
+        
+        sll.removeLast();
+        
+        sll.remove(3);
+        
+        
     }
 }
